@@ -41,7 +41,7 @@ class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.Wie}>
         <StatusBar backgroundColor={'orange'} />
         <Text>Out text : {this.state.fullText}</Text>
         <Text style={{color: this.state.warnaText}}>Halo Semua..!!!</Text>
@@ -66,7 +66,7 @@ class App extends Component {
 export default App;
 
 const styles = StyleSheet.create({
-  container: {
+  Wie: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
