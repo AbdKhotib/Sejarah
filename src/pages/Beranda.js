@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
-    Text,
-    View,
-    TouchableOpacity,
-    StyleSheet,
+  View,
+  Text,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 
 const Tombol = ({label, onPress}) => {
@@ -14,28 +15,32 @@ const Tombol = ({label, onPress}) => {
   );
 };
 
-export class Beranda extends Component {
-  render() {
-    return (
-      <View>
+const Beranda = ({ navigation }) => {
+  return (
+    <View>
+        <StatusBar backgroundColor={'orange'} />
         <Tombol
-          label={'Pertama'}
-          onPress={() => this.props.navigation.navigate('Partsatu')}
+          label={'Ke satu'}
+          onPress={() => navigation.navigate('Partsatu')}
         />
-        <Tombol label={'Kedua'} />
-        <Tombol label={'Ketiga'} />
+        <Tombol
+          label={'Ke dua'}
+          onPress={() => navigation.navigate('Partdua')}
+        />
+        <Tombol label={'Ke tiga'} />
       </View>
-    );
-  }
+  )
 }
 
-export default Beranda;
+export default Beranda
 
 const styles = StyleSheet.create({
   container: {
-    margin: 20,
-    padding: 15,
+    marginHorizontal: 40,
+    marginVertical: 10,
     borderRadius: 20,
+    elevation: 10,
+    padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'orange',
