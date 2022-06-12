@@ -1,89 +1,34 @@
-import React, {Component} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  Alert,
-  StatusBar,
-} from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+import Setting from './routes/Setting';
+import Home from './routes/Route';
 
-    this.state = {
-      inputPertama: null,
-      inputKedua: null,
-      fullText: null,
-    };
-  }
+const Button = createBottomTabNavigator ();
 
-  getInputSatu = text => {
-    this.setState({inputPertama: text});
-  };
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Button.Navigator
+      screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
 
-  getInputDua = text => {
-    this.setState({inputKedua: text});
-  };
-
-  
-  updateFullText = () => {
-    let text1 = this.state.inputPertama;
-    let text2 = this.state.inputKedua;
-    if (text1 !== null && text2 !== null && text1 !== ' ' && text2 !== ' ') {
-      this.setState({fullText: text1 + ' ' + text2});
-    } else {
-      Alert.alert('Info', 'lengkapi pengisian');
-    }
-  };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <StatusBar backgroundColor={'orange'} />
-        <Text>Out text : {this.state.fullText}</Text>
-        <Text style={{color: this.state.warnaText}}>Halo Semua..!!!</Text>
-        <TextInput
-          onChangeText={text => this.getInputSatu(text)}
-          style={styles.input}
-        />
-        <TextInput
-          onChangeText={text => this.getInputDua(text)}
-          style={styles.input}
-        />
-        <TouchableOpacity
-          onPress={() => this.updateFullText()}
-          style={styles.btn}>
-          <Text>Button</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+            if (route.name === 'Home') {
+              iconName = focused ? 'md-home' : 'home-outline';
+            } else if (route.name === 'Setting') {
+              iconName = focused ? 'md-settings' : 'settings-outline';
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'orange',
+          tabBarInactiveTintColor: 'gray',
+        })}>
+        <Button.Screen name='Home' component={Home} />
+        <Button.Screen name='Setting' component={Setting} />
+      </Button.Navigator>
+    </NavigationContainer>
+  )
 }
-
-export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btn: {
-    backgroundColor: 'orange',
-    padding: 10,
-    width:100,
-    marginVertical: 20,
-    borderRadius:10,
-    alignItems:'center',
-  },
-  input: {
-    margin: 5,
-    borderRadius: 20,
-    borderWidth:1,
-    padding: 10,
-    width: 300,
-  },
-});
