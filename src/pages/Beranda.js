@@ -28,11 +28,11 @@ const Beranda = ({ navigation }) => {
           onPress={() => navigation.navigate('Partdua')}
         />
         <Tombol label={'Ke tiga'} />
-      </View>
+    </View>
   )
 }
 
-export default Beranda
+export default Beranda;
 
 const styles = StyleSheet.create({
   container: {
