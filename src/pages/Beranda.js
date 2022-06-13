@@ -27,7 +27,9 @@ const Beranda = ({ navigation }) => {
           label={'Ke dua'}
           onPress={() => navigation.navigate('Partdua')}
         />
-        <Tombol label={'Ke tiga'} />
+        <Tombol
+         label={'Ke tiga'}
+         onPress={() => navigation.navigate('Parttiga')} />
     </View>
   )
 }
