@@ -31,8 +31,8 @@ const Main = () => {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'white',
-          tabBarInactiveTintColor: 'black',
+          tabBarActiveTintColor: 'black',
+          tabBarInactiveTintColor: 'white',
           tabBarStyle:{
             backgroundColor: 'orange'
             },
