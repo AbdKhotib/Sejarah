@@ -1,50 +1,20 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StatusBar,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, Image, StatusBar, ScrollView,} from 'react-native';
 
-const Tombol = ({label, onPress}) => {
+const Beranda = () => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Text>{label}</Text>
-    </TouchableOpacity>
-  );
-};
-
-const Beranda = ({ navigation }) => {
-  return (
-    <View>
-        <StatusBar backgroundColor={'orange'} />
-        <Tombol
-          label={'Ke satu'}
-          onPress={() => navigation.navigate('Partsatu')}
-        />
-        <Tombol
-          label={'Ke dua'}
-          onPress={() => navigation.navigate('Partdua')}
-        />
-        <Tombol
-         label={'Ke tiga'}
-         onPress={() => navigation.navigate('Parttiga')} />
-    </View>
+    <ScrollView>
+      <StatusBar translucent={true} backgroundColor={'transparent'} barStyle={'light-content'} />
+      <View  style={{backgroundColor:'#000000', justifyContent:'center', alignItems:'center'}}>
+        <Text style={{color:'white'}}>Beranda</Text>
+        <Image source={require('../icon/istockphoto-1224500457-612x612.jpg')}/>
+        <Image source={require('../icon/istockphoto-1224500457-612x612.jpg')}/>
+        <Image source={require('../icon/istockphoto-1224500457-612x612.jpg')}/>
+        <Image source={require('../icon/istockphoto-1224500457-612x612.jpg')}/>
+        <Image source={require('../icon/istockphoto-1224500457-612x612.jpg')}/>
+      </View>
+    </ScrollView>
   )
 }
 
-export default Beranda;
-
-const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 40,
-    marginVertical: 10,
-    borderRadius: 20,
-    elevation: 10,
-    padding: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'orange',
-  },
-});
+export default Beranda

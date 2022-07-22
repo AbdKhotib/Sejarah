@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   Text: {
     fontSize: 24,
     fontStyle: 'italic',
-    color: 'orange',
+    color: '#aaaaaa',
   },
 })
 

@@ -2,14 +2,13 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import {
   Beranda,
-  Partsatu,
-  Partdua,
   Login,
   Splashscreen,
-  Parttiga,
+  Post,
   Profile
 } from '../pages/Page';
 
@@ -21,23 +20,30 @@ const Main = () => {
     <Button.Navigator
       screenOptions={({ route }) => ({
           headerShown: false,
-          tabBarIcon: ({ focused, color, size }) => {
+          tabBarIcon: ({ focused, color, }) => {
             let iconName;
 
             if (route.name === 'Beranda') {
-              iconName = focused ? 'md-home' : 'md-home-outline';
+              iconName = focused ? 'md-home-outline' : 'md-home';
+            } else if (route.name === 'Post') {
+              iconName = focused ? 'add-circle-outline' : 'add-circle';
             } else if (route.name === 'Profile') {
-              iconName = focused ? 'md-person' : 'md-person-outline';
+              iconName = focused ? 'md-person-outline' : 'md-person';
             }
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return <Ionicons name={iconName} size={38} color={color} />;
           },
-          tabBarActiveTintColor: 'black',
-          tabBarInactiveTintColor: 'white',
+          tabBarActiveTintColor: '#ff5c5c',
+          tabBarInactiveTintColor: '#bbbbbb',
           tabBarStyle:{
-            backgroundColor: 'orange'
+            borderTopColor:'#ff5c5c',
+            backgroundColor: 'transparent',
+            position: 'absolute',
+            height: 60,
+            elevation: 0,
             },
         })}>
         <Button.Screen name='Beranda' component={Beranda} />
+        <Button.Screen name='Post' component={Post} />
         <Button.Screen name='Profile' component={Profile} />
       </Button.Navigator>
   )
@@ -45,6 +51,7 @@ const Main = () => {
 
 const Route = () => {
   return (
+    <SafeAreaProvider>
     <Navi.Navigator initialRouteName='Splashscreen'>
         <Navi.Screen
           name='Splashscreen'
@@ -53,11 +60,9 @@ const Route = () => {
         <Navi.Screen name='Main'
           component={Main}
           options={{headerShown:false}} />
-        <Navi.Screen name='Partsatu' component={Partsatu} />
-        <Navi.Screen name='Partdua' component={Partdua} />
-        <Navi.Screen name='Parttiga' component={Parttiga} />
         <Navi.Screen name='Login' component={Login} />
     </Navi.Navigator>
+    </SafeAreaProvider>
   )
 }
 

@@ -42,9 +42,9 @@ class Setting extends Component {
   render() {
     return (
       <View style={styles.Wie}>
-        <StatusBar backgroundColor={'orange'} />
+        <StatusBar backgroundColor={'#cccccc'} />
         <Text>Out text : {this.state.fullText}</Text>
-        <Text style={{color: this.state.warnaText}}>Halo Semua..!!!</Text>
+        <Text>Halo Semua..!!!</Text>
         <TextInput
           onChangeText={text => this.getInputSatu(text)}
           style={styles.input}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btn: {
-    backgroundColor: 'orange',
+    backgroundColor: '#cccccc',
     padding: 10,
     width:100,
     marginVertical: 20,
